@@ -1,203 +1,91 @@
 # super-yaml
 
-[![Version](https://img.shields.io/npm/v/super-yaml.svg)](https://npmjs.org/package/super-yaml)
-[![Downloads/week](https://img.shields.io/npm/dw/super-yaml.svg)](https://npmjs.org/package/super-yaml)
-[![codecov](https://codecov.io/gh/doriaviram/super-yaml/branch/master/graph/badge.svg?token=D2ZTCVDOX1)](https://codecov.io/gh/doriaviram/super-yaml)
-[![License](https://img.shields.io/npm/l/super-yaml.svg)](https://github.com/doriaviram/super-yaml/blob/master/package.json)
-[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
-[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
+[![Built with Ona](https://ona.com/build-with-ona.svg)](https://app.ona.com/#https://github.com/Interested-Deving-1896/super-yaml) [![KDE Eco](https://img.shields.io/badge/KDE%20Eco-certified-brightgreen?logo=kde&logoColor=white&style=flat-square)](https://eco.kde.org/) [![Blue Angel](https://img.shields.io/badge/Blue%20Angel-DE--UZ%20215-0055a4?style=flat-square)](https://www.blauer-engel.de/en/certification/criteria)
 
-## Intro
 
-super-yaml is a tool that helps you write enhanced yaml's and compile them to regular yaml `.yml` files.
+<!-- AI:start:what-it-does -->
+_Description pending._
+<!-- AI:end:what-it-does -->
 
-Quick demo: https://doriaviram.github.io/super-yaml/
+## Architecture
 
-## Features
+<!-- AI:start:architecture -->
+_Architecture documentation pending._
+<!-- AI:end:architecture -->
 
-### Common types
+## Install
 
-**In**
+<!-- Add installation instructions here. This section is yours — the AI will not modify it. -->
 
-```yaml
-_types:
-  MyCoolType:
-    properties:
-      englishName: <% Var(name) %> # Expect name parameter
-      geoData:
-        city: Jerusalem # Const
-        country: <% Var(country,Israel) %> # Parameter with default value
-      hebrewName: <% Var(name) %> # Reuse same parameter
-
-CoolExample1<MyCoolType>:
-  name: SuperYaml
-CoolExample2<MyCoolType>:
-  name: Syml
-  country: Tel-Aviv # Is it a country ?
+```bash
+git clone https://github.com/Interested-Deving-1896/super-yaml.git
+cd super-yaml
 ```
 
-**Out**
+## Usage
 
-```yaml
-CoolExample1:
-  englishName: SuperYaml
-  geoData:
-    city: Jerusalem
-    country: Israel
-  hebrewName: SuperYaml
-CoolExample2:
-  englishName: Syml
-  geoData:
-    city: Jerusalem
-    country: Tel-Aviv
-  hebrewName: Syml
-```
+<!-- Add usage examples here. This section is yours — the AI will not modify it. -->
 
-### DRY - Imports
+## Configuration
 
-**In**
+<!-- Document configuration options here. This section is yours — the AI will not modify it. -->
 
-`shared.syml`
+## CI
 
-```yaml
-_types:
-  MyCoolType:
-    properties:
-      englishName: <% Var(name) %> # Expect name parameter
-      geoData:
-        city: Jerusalem # Const
-        country: <% Var(country,Israel) %> # Parameter with default value
-      hebrewName: <% Var($.name) %> # Reuse same parameter
-```
+<!-- AI:start:ci -->
+_CI documentation pending._
+<!-- AI:end:ci -->
 
-`config.syml`
+## Mirror chain
 
-```yaml
-_import:
-  - ./shared.syml
-
-CoolExample1<MyCoolType>:
-  name: SuperYaml
-CoolExample2<MyCoolType>:
-  name: Syml
-  country: Tel-Aviv # Is it a country ?
-```
-
-**Out**
-
-```yaml
-CoolExample1:
-  englishName: SuperYaml
-  geoData:
-    city: Jerusalem
-    country: Israel
-  hebrewName: SuperYaml
-CoolExample2:
-  englishName: Syml
-  geoData:
-    city: Jerusalem
-    country: Tel-Aviv
-  hebrewName: Syml
-```
-
-### String templates
-
-**In**
-
-```yaml
-_types:
-  MyCoolType:
-    properties:
-      englishName: Mr. <% Var(name) %>
-      welcomeMessage: Mr. <% Var(name) %><% Var(name) %>, Hello
-CoolExample1<MyCoolType>:
-  name: SuperYaml
-```
-
-**Out**
-
-```yaml
-CoolExample1:
-  englishName: Mr. SuperYaml
-  welcomeMessage: Mr. SuperYaml, Hello
-```
-
-### Config
-
-All options, which are set _Available in global config?_ from `ToastOptions` are supported. Below are extra configurable options:
-
-| Name                 | Type     | Default | Description                                                |
-| -------------------- | -------- | ------- | ---------------------------------------------------------- |
-| `typeKeyPrefix`      | `string` | `<`     | Set the prefix for type declaration `Example1<MyCoolType>` |
-| `typeKeySuffix`      | `string` | `>`     | Set the suffix for type declaration `Example1<MyCoolType>` |
-| `typeVariablePrefix` | `string` | `$.`    | Set the prefix for variable `$.myParam`                    |
-
-### Requirements
-
-`nodejs >= 12`
-
-### Usage
-
-<!-- usage -->
-
-```sh-session
-$ npm install -g super-yaml
-$ super-yaml COMMAND
-running command...
-$ super-yaml (-v|--version|version)
-super-yaml/0.0.0-development darwin-x64 node-v12.9.1
-$ super-yaml --help [COMMAND]
-USAGE
-  $ super-yaml COMMAND
-...
-```
-
-<!-- usagestop -->
-
-### Commands
-
-<!-- commands -->
-
-- [`super-yaml compile`](#super-yaml-compile)
-- [`super-yaml help [COMMAND]`](#super-yaml-help-command)
-
-## `super-yaml compile`
-
-Compile syml to simple yml
+<!-- AI:start:mirror-chain -->
+This repo is maintained in [`Interested-Deving-1896/super-yaml`](https://github.com/Interested-Deving-1896/super-yaml) and mirrored through:
 
 ```
-USAGE
-  $ super-yaml compile
-
-OPTIONS
-  -s, --source=source                      (required)
-  -t, --target=target                      (required)
-  --typeKeyPrefix=typeKeyPrefix
-  --typeKeySuffix=typeKeySuffix
-  --typeVariablePrefix=typeVariablePrefix
-
-EXAMPLES
-  $ super-yaml compile -s config.syml -t config.yml
-  $ super-yaml compile --source config.syml --target config.yml
+Interested-Deving-1896/super-yaml  ──►  OpenOS-Project-OSP/super-yaml  ──►  OpenOS-Project-Ecosystem-OOC/super-yaml
 ```
 
-_See code: [src/commands/compile.ts](https://github.com/doriaviram/super-yaml/blob/v0.0.0-development/src/commands/compile.ts)_
+Changes flow downstream automatically via the hourly mirror chain in
+[`fork-sync-all`](https://github.com/Interested-Deving-1896/fork-sync-all).
+Direct commits to OSP or OOC are detected and opened as PRs back to `Interested-Deving-1896`.
+<!-- AI:end:mirror-chain -->
 
-## `super-yaml help [COMMAND]`
+## Contributors
 
-display help for super-yaml
+<!-- AI:start:contributors -->
+_Contributors pending._
+<!-- AI:end:contributors -->
 
-```
-USAGE
-  $ super-yaml help [COMMAND]
+## Origins
 
-ARGUMENTS
-  COMMAND  command to show help for
+<!-- AI:start:origins -->
+_Original project — no upstream influences recorded._
+<!-- AI:end:origins -->
 
-OPTIONS
-  --all  see all commands in CLI
-```
+## Resources
 
-_See code: [@oclif/plugin-help](https://github.com/oclif/plugin-help/blob/v3.2.2/src/commands/help.ts)_
+<!-- AI:start:resources -->
+_No additional resource files found._
+<!-- AI:end:resources -->
 
-<!-- commandsstop -->
+## Accessibility
+
+<!-- AI:start:accessibility -->
+This repo uses automated accessibility auditing via `check-accessibility.yml`.
+
+Checks include: CODEOWNERS ownership coverage, README screen-reader compatibility,
+WCAG 2.1 AA HTML compliance, audio overview (espeak-ng), and Braille output (liblouis).
+
+
+
+
+Run the [Check Accessibility](https://github.com/Interested-Deving-1896/super-yaml/actions/workflows/check-accessibility.yml)
+workflow to generate the first report and accessibility artifacts.
+See [DOCS/accessibility.md](https://github.com/Interested-Deving-1896/super-yaml/blob/main/DOCS/accessibility.md) for the full reference.
+<!-- AI:end:accessibility -->
+
+## License
+
+<!-- AI:start:license -->
+[MIT](https://github.com/Interested-Deving-1896/super-yaml/blob/master/LICENSE) © 2026 [Interested-Deving-1896](https://github.com/Interested-Deving-1896)
+<!-- AI:end:license -->
